@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.isidrocorp.horasextras.dao.UsuarioDAO;
 import br.com.isidrocorp.horasextras.model.Usuario;
 
+@CrossOrigin("*")
 // vamos definir que a classe é um RestController para EXPOR URLs (nossa API)
 @RestController
 public class UsuarioController {
@@ -41,6 +43,7 @@ public class UsuarioController {
 		Usuario res = dao.findByRacf(dadosLogin.getRacf());
 		if (res != null) {  // ele existe na base com o RACF informado?
 			if (res.getSenha().equals(dadosLogin.getSenha())) {
+				res.setSenha("********");
 				return ResponseEntity.ok(res); // retorno 200, com o objeto no corpo da resposta
 			}
 			else {
