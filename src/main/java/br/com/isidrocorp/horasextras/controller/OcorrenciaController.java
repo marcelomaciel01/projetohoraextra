@@ -35,7 +35,7 @@ public class OcorrenciaController {
 	@GetMapping("/ocorrencias/status/{status}")
 	public ArrayList<Ocorrencia> buscarPorStatus(@PathVariable int status){
 		ArrayList<Ocorrencia> lista;
-		
+		lista = dao.findByStatus(status);
 		return lista;
 	}
 	
