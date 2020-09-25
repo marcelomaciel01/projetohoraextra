@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.isidrocorp.horasextras.dao.OcorrenciaDAO;
@@ -37,6 +39,17 @@ public class OcorrenciaController {
 		ArrayList<Ocorrencia> lista;
 		lista = dao.findByStatus(status);
 		return lista;
+	}
+	
+	@PutMapping("/ocorrencias/atualizar")
+	public Ocorrencia atualizarOcorrencia(@RequestBody Ocorrencia oc) {
+		try {
+			dao.save(oc);
+			return oc;
+		}
+		catch(Exception ex) {
+			return null;
+		}
 	}
 	
 }
