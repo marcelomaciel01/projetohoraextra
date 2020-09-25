@@ -1,7 +1,7 @@
 package br.com.isidrocorp.horasextras.model;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class Ocorrencia {
 	private LocalDate data;
 	
 	@Column(name="num_horas")
-	private LocalTime numHoras;
+	private String numHoras;
 	
 	@Column(name="ponto_manual")
 	private int       pontoManual;
@@ -70,11 +70,11 @@ public class Ocorrencia {
 		this.data = data;
 	}
 
-	public LocalTime getNumHoras() {
+	public String getNumHoras() {
 		return numHoras;
 	}
 
-	public void setNumHoras(LocalTime numHoras) {
+	public void setNumHoras(String numHoras) {
 		this.numHoras = numHoras;
 	}
 

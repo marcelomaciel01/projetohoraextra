@@ -1,5 +1,7 @@
 package br.com.isidrocorp.horasextras.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,5 +24,19 @@ public class OcorrenciaController {
 		return oc;
 	}
 	
+	
+	@GetMapping("/ocorrencias")
+	public ArrayList<Ocorrencia> buscarTodas(){
+		ArrayList<Ocorrencia> lista;
+		lista = (ArrayList<Ocorrencia>)dao.findAll();
+		return lista;
+	}
+	
+	@GetMapping("/ocorrencias/status/{status}")
+	public ArrayList<Ocorrencia> buscarPorStatus(@PathVariable int status){
+		ArrayList<Ocorrencia> lista;
+		
+		return lista;
+	}
 	
 }
